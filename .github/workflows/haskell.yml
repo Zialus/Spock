@@ -13,15 +13,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-24.04, macOS-14, windows-2022]
         ghc:
-          - "8.6.5"
           - "8.8.4"
           - "8.10.7"
           - "9.0.2"
-          - "9.2.7"
-          - "9.4.5"
-          - "9.6.2"
+          - "9.2.8"
+          - "9.4.8"
+          - "9.6.6"
+          - "9.8.4"
 
     steps:
     - name: Checkout
@@ -70,11 +70,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macOS-latest, windows-latest]
+        os: [ubuntu-24.04, macOS-14, windows-2022]
         stack-resolver:
           - "--resolver nightly"  # stack nightly
           - ""  # stack default
-          - "--resolver lts-21.3"  # ghc 9.4.5
+          - "--resolver lts-22.6"  # ghc 9.6.3
+          - "--resolver lts-21.25"  # ghc 9.4.8
+          - "--resolver lts-21.21"  # ghc 9.4.7
+          - "--resolver lts-21.11"  # ghc 9.4.6
+          - "--resolver lts-21.7"  # ghc 9.4.5
           - "--resolver lts-20.26"  # ghc 9.2.8
           - "--resolver lts-20.24"  # ghc 9.2.7
           - "--resolver lts-20.12"  # ghc 8.2.6
@@ -87,7 +91,6 @@ jobs:
           - "--resolver lts-16.31"  # stack 8.8.4
           - "--resolver lts-16.11"  # stack 8.8.3
           - "--resolver lts-15.3"  # stack 8.8.2
-
 
     steps:
     - name: Checkout
